@@ -15,7 +15,6 @@ const app=new Vue({
        zoom2:false,
        slideUp:false,
        round:0,
-       load:false,
        error:'input game rounds',
     }
     },
@@ -34,10 +33,8 @@ const app=new Vue({
              location.reload();
         },
         gameOn(){
-            this.setQuestions(this.countries);
-            for(let i=0;i<this.round;i++){
-                this.translate.push(false);
-            }
+            this.questions=this.setQuestions(this.countries);
+            this.translate=this.initialize(this.round);
             if((this.flag || this.capital) && this.round>=5){
                 this.slideUp=true
                 this.zoom2=this.capital;
@@ -88,9 +85,11 @@ const app=new Vue({
              return question;
        },
        setQuestions(countries){
+           let temp=[];
            for(let i=0;i<this.round;i++){
-               this.questions.push(this.createQuestion(countries));
+               temp.push(this.createQuestion(countries));
            }
+           return temp;
        },
        markAnswer(i,j){
            if(!this.marked){
@@ -116,6 +115,13 @@ const app=new Vue({
                }
            });
            return temp;
+       },
+       initialize(length){
+           let temp=[];
+           for(let i=0;i<length;i++){
+              temp.push(false);
+            }
+            return temp; 
        },
        next(index){
           this.marked=false; 
@@ -176,17 +182,16 @@ const app=new Vue({
             return `rgb(${redness},127.5,127.5)`
         },
         loaded(){
+            let load=false;
             this.questions.forEach(question=>{
                 if(question!==undefined){
-                    this.load=true;
-                    console.log(this.translate.length);
-                    console.log(this.round);
+                    load=true;
                 }
                 else{
-                    this.load=false
+                    load=false
                 }
               });
-             return this.load;
+             return load;
         }
     },
     async mounted(){

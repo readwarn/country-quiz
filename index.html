@@ -11,7 +11,7 @@
     <div id="app">    
             <h3>COUNTRY QUIZ</h3>
                 <div class="card-container">
-                    <div class="result">
+                    <div class="result" v-if="loaded">
                           <p class="grade" :style="{color:gradeColor}">{{grade}}</p>
                           <img src="assets/result.svg" alt="result">
                           <h3>RESULTS</h3>
@@ -28,10 +28,10 @@
                             <i class="fa" :class="{'fa-times-circle':incorrect[j], 'fa-check-circle':correct[j]}"></i>
                         </div>
                         <button @click="next(i)">Next</button>
-                        <div class="loader-container" v-if="!loaded">
-                            <img src="./assets/loader.svg" alt="loader">
-                         </div> 
-                    </div>  
+                    </div>
+                    <div class="loader-container" v-if="!loaded">
+                        <img src="./assets/loader.svg" alt="loader">
+                     </div>   
                     <div class="game-type" :class="{'slide-up':slideUp}">
                         <p class="question"> Choose preferred option. Predict the country flag or the country capital</p>
                         <div class="round">
