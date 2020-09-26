@@ -6,15 +6,14 @@
 html,body{
     min-height: 100vh;
     font-family: 'Poppins', sans-serif;
+    background: rgba(96, 102, 208, 0.7);
 }
 div#app{
     width: 100%;
-    min-height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background: rgba(96, 102, 208, 0.7);
 }
 div.illustration-container{
     position: fixed;
@@ -30,7 +29,7 @@ div.illustration-container img{
 div.card-container{
     width: 32%;
     position: relative;
-    height: 90vh;
+    height: 500px;
     border-radius: 0.6rem;
     overflow-x: hidden;
 }
@@ -38,7 +37,7 @@ h3{
     color: white;
     width: 32%;
     font-size: 1.6rem;
-    margin:1rem 0rem 0rem 0rem;
+    margin-top: 2.5rem;
 }
 div.capital{
     padding: 1.5rem 1rem;
