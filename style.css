@@ -6,7 +6,8 @@
 html,body{
     min-height: 100vh;
     font-family: 'Poppins', sans-serif;
-    background: rgba(96, 102, 208, 0.7);
+    background: rgb(96, 102, 208);
+    padding: 1rem 0.3rem;
 }
 div#app{
     width: 100%;
@@ -29,7 +30,7 @@ div.illustration-container img{
 div.card-container{
     width: 32%;
     position: relative;
-    height: 500px;
+    height: 520px;
     border-radius: 0.6rem;
     overflow-x: hidden;
 }
@@ -37,7 +38,6 @@ h3{
     color: white;
     width: 32%;
     font-size: 1.6rem;
-    margin-top: 2.5rem;
 }
 div.capital{
     padding: 1.5rem 1rem;
@@ -198,7 +198,7 @@ div.game-type,div.result,div.capital,div.loader-container{
     left: 0;
     width: 100%;
     min-height: 490px;
-    max-height: 520px;
+    max-height: 550px;
     border-radius: 0.6rem;
     background: white;
 }
@@ -293,6 +293,6 @@ div.result h3{
 
 @media screen and (max-width:720px){
     div.card-container,h3,div.illustration-container{
-        width: 95%;
+        width: 100%;
     }
 }

@@ -11,12 +11,12 @@ const app=new Vue({
        marked:false,
        capital:false,
        flag:false,
-       loaded:false,
        zoom1:false,
        zoom2:false,
        slideUp:false,
        round:0,
-       error:'',
+       load:false,
+       error:'input game rounds',
     }
     },
     methods:{
@@ -174,6 +174,19 @@ const app=new Vue({
             const ratio=1-(this.score/this.round);
             const redness=ratio*255;
             return `rgb(${redness},127.5,127.5)`
+        },
+        loaded(){
+            this.questions.forEach(question=>{
+                if(question!==undefined){
+                    this.load=true;
+                    console.log(this.translate.length);
+                    console.log(this.round);
+                }
+                else{
+                    this.load=false
+                }
+              });
+             return this.load;
         }
     },
     async mounted(){

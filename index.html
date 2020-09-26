@@ -15,10 +15,10 @@
                           <p class="grade" :style="{color:gradeColor}">{{grade}}</p>
                           <img src="assets/result.svg" alt="result">
                           <h3>RESULTS</h3>
-                          <p>You got <span class="score" :style="{color:gradeColor}">{{score}}</span> corrects answers</p>
+                          <p>You got <span class="score" :style="{color:gradeColor}">{{score}}</span> correct answers</p>
                           <button @click="reset">Try Again</button>
                     </div> 
-                    <div class="capital" v-for="(question,i) in questions" :key="i" v-if="question.options!==undefined && question.answer!==undefined" :class="{'translate':translate[i]}">
+                    <div class="capital" v-for="(question,i) in questions" :key="i" v-if="loaded" :class="{'translate':translate[i]}">
                         <img :src="question.answer.flag" alt="flag" v-if="flag">
                         <p class="question" v-if="capital">{{question.answer["capital"]}} is the capital of</p>
                         <p class="question" v-if="flag">Which country does this flag belong to?</p>
@@ -28,12 +28,12 @@
                             <i class="fa" :class="{'fa-times-circle':incorrect[j], 'fa-check-circle':correct[j]}"></i>
                         </div>
                         <button @click="next(i)">Next</button>
-                        <div class="loader-container" v-if="question.options===undefined">
+                        <div class="loader-container" v-if="!loaded">
                             <img src="./assets/loader.svg" alt="loader">
                          </div> 
                     </div>  
                     <div class="game-type" :class="{'slide-up':slideUp}">
-                        <p class="question"> Choose preffered option. Predict the country flag or the country capital</p>
+                        <p class="question"> Choose preferred option. Predict the country flag or the country capital</p>
                         <div class="round">
                             <p>Round</p>
                             <div>
