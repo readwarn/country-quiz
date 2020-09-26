@@ -1,0 +1,299 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap');
+*{
+    margin: 0;
+    box-sizing: border-box;
+}
+html,body{
+    min-height: 100vh;
+    font-family: 'Poppins', sans-serif;
+}
+div#app{
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: rgba(96, 102, 208, 0.7);
+}
+div.illustration-container{
+    position: fixed;
+    display: flex;
+    justify-content: flex-end;
+    height: 60px;
+    width: 32%;
+    top: 4%;
+}
+div.illustration-container img{
+    width: 24%;
+}
+div.card-container{
+    width: 32%;
+    position: relative;
+    height: 90vh;
+    border-radius: 0.6rem;
+    overflow-x: hidden;
+}
+h3{
+    color: white;
+    width: 32%;
+    font-size: 1.6rem;
+    margin:1rem 0rem 0rem 0rem;
+}
+div.capital{
+    padding: 1.5rem 1rem;
+    transition: all ease-in-out 0.4s;
+}
+div.capital img{
+    display: block;
+    width: 140px;
+    height: 80px;
+}
+div.game-type{
+    padding: 0rem 1rem;
+    display: flex;
+    flex-direction: column;
+}
+div.game-type div{
+    color: #F9A826;
+    text-align: center;
+    background: white;
+    font-weight: 700;
+    transition: all ease-in-out 0.5s;
+}
+div.game-type div.round{
+    background: transparent;
+    width: 100%;
+    color: #F9A826;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 1rem;
+    margin-top: auto;
+}
+div.round div{
+    display: flex;
+    margin: auto;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 0.7rem;
+}
+div.round button{
+    border: #2F527B 1.4px solid;
+    border-radius: 0.35rem;
+    background: transparent;
+    color: #2F527B;
+    padding: 0.7rem;
+    width: 20%;
+    cursor: pointer;
+}
+div.round button:hover{
+    color: #F9A826;
+    border-color: #F9A826;
+}
+div.round p.error{
+    color: #EA8282;
+    font-weight: 500;
+    font-size: 0.8rem;
+    margin-top: 0.5rem;
+}
+div.game-type input{
+    width: 20%;
+    padding: 0.7rem;
+    outline: none;
+    border: #1D355D 1.5px solid;
+    border-radius: 0.2rem;
+}
+div.game-type img{
+    width:  85%;
+    height: 85%;
+    margin: auto;
+    margin-top: 10px;
+    border-radius: 0.4rem;
+    display: block;
+    cursor: pointer;
+    border: #2F527B 1.8px solid;
+    transition: all ease-in-out 0.2s;
+}
+div.game-type img.picked{
+    border-color: #F9A826;
+}
+div.game-type img:hover{
+    transform: scale(1.05);
+}
+div.flag,div.capital1{
+    position: absolute;
+    width: 50%;
+    height: 200px;
+}
+div.flag{
+    transform: translate(93%,60%);
+}
+div.capital1{
+    transform: translate(-7%,60%);
+}
+div.translate{
+    transform: translateX(-100%);
+}
+div.option{
+    padding: 0.65rem;
+    border-radius: 0.4rem;
+    border: #2F527B 1.5px solid;
+    background: white;
+    display: flex;
+    align-items: center;
+    color: #2F527B;
+    margin-bottom: 1.3rem;
+    cursor: pointer;
+}
+div.card-container div.correct{
+     color: white;
+     border: 1.5px solid #60BF88;
+     background: #60BF88;
+}
+div.card-container div.incorrect{
+    color: white;
+    border: 1.5px solid #EA8282;
+    background: #EA8282;
+}
+
+div.option:hover{
+    background: #F9A826;
+    border:  #F9A826 1.5px solid;
+    color: white;
+}
+p.question{
+    color: #2F527B;
+    font-size: 1rem;
+    font-weight: 700;
+    margin: 1.4rem 0rem;
+}
+div.option i{
+    margin-left: auto;
+}
+div.option p:nth-child(1){
+    width: 12%;
+}
+div.option p:nth-child(2){
+    font-size: 0.85rem;
+}
+div.capital button{
+    outline: none;
+    border: none;
+    padding: 0.7rem 1rem;
+    display: block;
+    font-weight: 700;
+    cursor: pointer;
+    background: #F9A826;
+    border-radius: 0.35rem;
+    color: white;
+    margin-left: auto;
+}
+div.loader-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;  
+}
+div.game-type,div.result,div.capital,div.loader-container{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    min-height: 490px;
+    max-height: 520px;
+    border-radius: 0.6rem;
+    background: white;
+}
+div.game-type div.zoom-off{
+    animation: zoom-off 0.6s ease-in-out forwards;
+}
+div.slide-up{
+    animation: slide-up 0.6s ease 1.4s forwards;
+}
+div.result{
+    padding: 1rem;
+}
+div.result button{
+    border: #1D355D 1.5px solid;
+    border-radius: 0.35rem;
+    width: 120px;
+    font-weight: 700;
+    color: #1D355D;
+    outline: none;
+    display: block;
+    margin: auto;
+    margin-top: 3rem;
+    background: transparent;
+    padding: 1rem 0rem;
+    cursor: pointer;
+}
+div.result button:hover{
+    color: #F9A826;
+    border-color: #F9A826;
+}
+
+div.result p{
+    font-size: 0.85rem;
+    margin-bottom: 1rem;
+    text-align: center;
+    color: #2F527B;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+div.result img{
+    display: block;
+    width: 40%;
+    height: 20%;
+    margin:auto;
+    margin-bottom: 3rem;
+}
+span.score{
+    font-weight: 700;
+    font-size: 1.2rem;
+    margin: 0rem 0.3rem;
+    color: #60BF88;
+}
+div.result p.grade{
+    font-size: 3.6rem;
+    font-weight: 700;
+    justify-content: flex-end;
+    margin-top: auto;
+    color: #60BF88;
+}
+div.result h3{
+    color: #1D355D;
+    text-align: center;
+    width: 100%;
+    margin: 0;
+}
+@keyframes slide-up{
+      0%{
+          transform:translateY(0);
+      }
+      100%{
+          transform: translateY(-130%);
+      }
+}
+
+@keyframes zoom-off{
+    0%{
+        transform: translate(93%,0%);
+        z-index: 10;
+    }
+    100%{
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        margin-top: 0%;
+        transform: translate(0%,0%);
+        font-size: 1.4rem;
+        z-index: 10;
+    }
+}
+
+@media screen and (max-width:720px){
+    div.card-container,h3,div.illustration-container{
+        width: 95%;
+    }
+}

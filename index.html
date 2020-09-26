@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Country Quiz</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous" />
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="app">    
+            <h3>COUNTRY QUIZ</h3>
+                <div class="card-container">
+                    <div class="result">
+                          <p class="grade" :style="{color:gradeColor}">{{grade}}</p>
+                          <img src="assets/result.svg" alt="result">
+                          <h3>RESULTS</h3>
+                          <p>You got <span class="score" :style="{color:gradeColor}">{{score}}</span> corrects answers</p>
+                          <button @click="reset">Try Again</button>
+                    </div> 
+                    <div class="capital" v-for="(question,i) in questions" :key="i" v-if="question.options!==undefined && question.answer!==undefined" :class="{'translate':translate[i]}">
+                        <img :src="question.answer.flag" alt="flag" v-if="flag">
+                        <p class="question" v-if="capital">{{question.answer["capital"]}} is the capital of</p>
+                        <p class="question" v-if="flag">Which country does this flag belong to?</p>
+                        <div class="option"  v-for="(option,j) in question.options" :key="j" @click='markAnswer(i,j)' :class="{'correct':correct[j],'incorrect':incorrect[j]}">
+                            <p class="index">{{j | alphabet}}</p>
+                            <p>{{option.name}}</p>
+                            <i class="fa" :class="{'fa-times-circle':incorrect[j], 'fa-check-circle':correct[j]}"></i>
+                        </div>
+                        <button @click="next(i)">Next</button>
+                        <div class="loader-container" v-if="question.options===undefined">
+                            <img src="./assets/loader.svg" alt="loader">
+                         </div> 
+                    </div>  
+                    <div class="game-type" :class="{'slide-up':slideUp}">
+                        <p class="question"> Choose preffered option. Predict the country flag or the country capital</p>
+                        <div class="round">
+                            <p>Round</p>
+                            <div>
+                                <input type="number" placeholder="Input number of round" v-model="round" v-on:keyup.enter="gameOn">
+                                <button @click="gameOn">Start</button>
+                            </div>
+                            <p class="error">{{error}}</p>
+                        </div>
+                        <div class="capital1" :class="{'zoom-off':zoom2}">
+                            <p>CAPITAL</p>
+                             <img src="assets/capital.svg" alt="" @click="toggleOption('capital')" :class="{'picked':capital}">
+                        </div>
+                        <div class="flag" :class="{'zoom-off':zoom1}">
+                            <p>FLAG</p>
+                             <img src="assets/flag.svg" alt="" @click="toggleOption('flag')" :class="{'picked':flag}">
+                        </div>
+                    </div>
+                    <div class="illustration-container">
+                        <img src="assets/capital.svg" alt="ad" v-if="capital">
+                        <img src="assets/flag.svg" alt="flag" v-if="flag">
+                    </div>
+                </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
