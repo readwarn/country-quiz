@@ -8,6 +8,9 @@ html,body{
     font-family: 'Poppins', sans-serif;
     background: rgb(96, 102, 208);
     padding: 1rem 0.3rem;
+    width: 100%;
+    display: flex;
+    align-items: center;
 }
 div#app{
     width: 100%;
