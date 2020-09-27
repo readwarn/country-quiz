@@ -3,14 +3,14 @@
     margin: 0;
     box-sizing: border-box;
 }
+
 body{
     font-family: 'Poppins', sans-serif;
     background: rgb(96, 102, 208);
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-    border: springgreen 1px solid;
+    height: 92vh;
 }
 div#app{
     height: 540px;
