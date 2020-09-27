@@ -6,9 +6,13 @@
 body{
     font-family: 'Poppins', sans-serif;
     background: rgb(96, 102, 208);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 98vh;
 }
 div#app{
-    height: 98vh;
+    height: 540px;
     position: relative;
     width: 32%;
     margin: auto;
@@ -24,7 +28,7 @@ div.illustration-container{
     bottom: 0;
     right: 0;
     left: 0;
-    top: 3.5%;
+    top: 10px;
     margin:0 auto;
     border-radius: 0.6rem;
 }
@@ -193,7 +197,7 @@ div.loader-container{
 div.game-type,div.result,div.capital,div.loader-container{
     position: absolute;
     margin: auto;
-    top: 4%;
+    top: 40px;
     bottom: 0;
     right: 0;
     left: 0;
