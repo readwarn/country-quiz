@@ -8,40 +8,37 @@ body{
     background: rgb(96, 102, 208);
 }
 div#app{
-    min-height: 98vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    padding: 0rem 1rem;
+    height: 98vh;
+    position: relative;
+    width: 32%;
+    margin: auto;
+    border-radius: 0.6rem;
+    overflow-x: hidden;
 }
 div.illustration-container{
-    position: fixed;
+    position: absolute;
     display: flex;
     justify-content: flex-end;
     height: 60px;
-    width: 32%;
-    top: 4%;
+    width: 100%;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    top: 3.5%;
+    margin:0 auto;
+    border-radius: 0.6rem;
 }
 div.illustration-container img{
     width: 24%;
 }
-div.card-container{
-    width: 32%;
-    position: relative;
-    min-height: 88vh;
-    border-radius: 0.6rem;
-    overflow-x: hidden;
-    margin: auto;
-}
+
 h3{
     color: white;
-    width: 32%;
     margin: auto;
     font-size: 1.6rem;
 }
 div.capital{
-    padding: 1.5rem 1rem;
+    padding: 1rem 1rem;
     transition: all ease-in-out 0.4s;
 }
 div.capital img{
@@ -126,10 +123,10 @@ div.flag,div.capital1{
     height: 200px;
 }
 div.flag{
-    transform: translate(93%,60%);
+    transform: translate(90%,60%);
 }
 div.capital1{
-    transform: translate(-7%,60%);
+    transform: translate(-5%,60%);
 }
 div.translate{
     transform: translateX(-100%);
@@ -145,12 +142,12 @@ div.option{
     margin-bottom: 1.3rem;
     cursor: pointer;
 }
-div.card-container div.correct{
+div#app div.correct{
      color: white;
      border: 1.5px solid #60BF88;
      background: #60BF88;
 }
-div.card-container div.incorrect{
+div#app div.incorrect{
     color: white;
     border: 1.5px solid #EA8282;
     background: #EA8282;
@@ -195,11 +192,13 @@ div.loader-container{
 }
 div.game-type,div.result,div.capital,div.loader-container{
     position: absolute;
+    margin: auto;
     top: 4%;
+    bottom: 0;
+    right: 0;
     left: 0;
     width: 100%;
-    min-height: 80vh;
-    max-height: 86vh;
+    max-height: 530px;
     border-radius: 0.6rem;
     background: white;
 }
@@ -293,7 +292,7 @@ div.result h3{
 }
 
 @media screen and (max-width:720px){
-    div.card-container,h3,div.illustration-container{
-        width: 100%;
+    div#app{
+       width: 92%;
     }
 }

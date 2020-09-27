@@ -10,7 +10,6 @@
 <body>
     <div id="app">    
             <h3>COUNTRY QUIZ</h3>
-                <div class="card-container">
                     <div class="result" v-if="loaded">
                           <p class="grade" :style="{color:gradeColor}">{{grade}}</p>
                           <img src="assets/result.svg" alt="result">
@@ -55,7 +54,6 @@
                         <img src="assets/capital.svg" alt="ad" v-if="capital">
                         <img src="assets/flag.svg" alt="flag" v-if="flag">
                     </div>
-                </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
