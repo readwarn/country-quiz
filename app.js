@@ -33,8 +33,8 @@ const app=new Vue({
              location.reload();
         },
         gameOn(){
-            this.questions=this.setQuestions(this.countries);
             this.translate=this.initialize(this.round);
+            this.questions=this.setQuestions(this.countries);
             if((this.flag || this.capital) && this.round>=5 && this.round<200){
                 this.slideUp=true
                 this.zoom2=this.capital;
@@ -97,27 +97,15 @@ const app=new Vue({
        markAnswer(i,j){
            if(!this.marked){
             this.marked=true;
-            const answerIndex=this.questions[i].answerIndex
-            this.correct=this.resetArray(this.correct,answerIndex);
+            const answerIndex=this.questions[i].answerIndex;
+            this.correct.splice(answerIndex, 1, true);
             if(j!==answerIndex){
-               this.incorrect=this.resetArray(this.incorrect,j);
+               this.incorrect.splice(j, 1, true);
             }else{
                 this.incorrect=[false,false,false,false];
                 this.score++;
             }
            }
-       },
-       resetArray(array,pickedIndex){
-           let temp=[];
-           array.forEach((element,index) => {
-               if(index===pickedIndex){
-                   temp.push(true);
-               }
-               else{
-                   temp.push(false);
-               }
-           });
-           return temp;
        },
        initialize(length){
            let temp=[];
@@ -141,19 +129,8 @@ const app=new Vue({
           this.marked=false; 
           this.incorrect=[false,false,false,false];
           this.correct=[false,false,false,false];
-          let temp=[];
-          for(let i=0;i<this.round;i++){
-              if(index===i || this.translate[i]){
-                  temp.push(true);
-              }
-              else{
-                  temp.push(false)
-              }
-          }
-          this.translate=temp; 
-          console.log(index) 
-       },
-       
+          this.translate.splice(index, 1, true);
+       } 
     },
     filters:{
         alphabet(value){

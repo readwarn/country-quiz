@@ -10,10 +10,10 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 92vh;
+    height: 100vh;
 }
 div#app{
-    height: 540px;
+    height: 90vh;
     position: relative;
     width: 32%;
     margin: auto;
@@ -199,12 +199,12 @@ div.loader-container{
 div.game-type,div.result,div.capital,div.loader-container{
     position: absolute;
     margin: auto;
-    top: 40px;
+    top: 35px;
     bottom: 0;
     right: 0;
     left: 0;
     width: 100%;
-    max-height: 530px;
+    max-height: 98%;
     border-radius: 0.6rem;
     background: white;
 }
