@@ -14,7 +14,7 @@ const app=new Vue({
        zoom1:false,
        zoom2:false,
        slideUp:false,
-       round:0,
+       round:5,
        error:'input game rounds',
     }
     },

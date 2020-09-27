@@ -93,10 +93,10 @@ div.round button:hover{
     border-color: #F9A826;
 }
 div.round p.error{
-    color: #EA8282;
+    color: #F9A826;
+    font-style: italic;
     font-weight: 500;
-    font-size: 0.8rem;
-    margin-top: 0.5rem;
+    font-size: 0.75rem;
 }
 div.game-type input{
     width: 20%;
