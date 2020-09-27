@@ -35,7 +35,7 @@ const app=new Vue({
         gameOn(){
             this.questions=this.setQuestions(this.countries);
             this.translate=this.initialize(this.round);
-            if((this.flag || this.capital) && this.round>=5){
+            if((this.flag || this.capital) && this.round>=5 && this.round<200){
                 this.slideUp=true
                 this.zoom2=this.capital;
                 this.zoom1=this.flag;
@@ -46,7 +46,10 @@ const app=new Vue({
                 return;
             }
             if(this.round<5){
-                this.error='round should be greater than 5'
+                this.error="round can't be less than 5"
+            }
+            if(this.round>200){
+                this.error="round can't be greater than 200"
             }
             console.log(typeof this.round)
         },
@@ -123,6 +126,17 @@ const app=new Vue({
             }
             return temp; 
        },
+        errorCheck(){
+            if(this.round<5){
+                this.error="round can't be less than 5"
+            }
+            else if(this.round>200){
+                this.error="round can't be greater than 200"
+            }
+            else{
+                this.error=`${this.round} rounds of game`;
+            }
+        },
        next(index){
           this.marked=false; 
           this.incorrect=[false,false,false,false];

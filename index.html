@@ -36,7 +36,7 @@
                         <div class="round">
                             <p>Round</p>
                             <div>
-                                <input type="number" min="5" placeholder="Input number of round" v-model="round" v-on:keyup.enter="gameOn">
+                                <input type="number" min="5" placeholder="Input number of round" v-model="round" v-on:keyup.enter="gameOn" @input="errorCheck">
                                 <p class="error">{{error}}</p>
                                 <button @click="gameOn">Start</button>
                             </div>

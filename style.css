@@ -97,6 +97,7 @@ div.round p.error{
     font-style: italic;
     font-weight: 500;
     font-size: 0.75rem;
+    width: 60%;
 }
 div.game-type input{
     width: 20%;
