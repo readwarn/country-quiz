@@ -9,7 +9,8 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 98vh;
+    height: 100vh;
+    border: springgreen 1px solid;
 }
 div#app{
     height: 540px;
