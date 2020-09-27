@@ -44,7 +44,7 @@ h3{
 }
 div.capital{
     padding: 1rem 1rem;
-    transition: all ease-in-out 0.4s;
+    transition: all ease 0.6s;
 }
 div.capital img{
     display: block;
