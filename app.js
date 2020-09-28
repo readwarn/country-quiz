@@ -15,6 +15,7 @@ const app=new Vue({
        zoom2:false,
        slideUp:false,
        round:5,
+       loaded:false,
        error:'input game rounds',
     }
     },
@@ -33,25 +34,25 @@ const app=new Vue({
              location.reload();
         },
         gameOn(){
-            this.translate=this.initialize(this.round);
-            this.questions=this.setQuestions(this.countries);
             if((this.flag || this.capital) && this.round>=5 && this.round<200){
                 this.slideUp=true
                 this.zoom2=this.capital;
                 this.zoom1=this.flag;
-                return;
             }
             if(!this.flag && !this.capital){
                 this.error='please make a selection!!!'
-                return;
             }
             if(this.round<5){
                 this.error="round can't be less than 5"
             }
-            if(this.round>200){
-                this.error="round can't be greater than 200"
+            if(this.round>40){
+                this.error="round can't be greater than 40"
             }
-            console.log(typeof this.round)
+            console.log(this.questions);
+            this.setQuestions(this.questions,this.round).then(res=>{
+                console.log(res);
+                this.loaded=true;
+            });
         },
         randomlySelectFourOptions(countries){
            let optionIndex=[];
@@ -87,12 +88,13 @@ const app=new Vue({
              }
              return question;
        },
-       setQuestions(countries){
-           let temp=[];
-           for(let i=0;i<this.round;i++){
-               temp.push(this.createQuestion(countries));
-           }
-           return temp;
+       setQuestions(questions,round){
+           return new Promise((resolve,reject)=>{
+                this.initialize(this.countries);
+                if(questions.length>=round){
+                    resolve(round);
+                }
+           });
        },
        markAnswer(i,j){
            if(!this.marked){
@@ -107,12 +109,10 @@ const app=new Vue({
             }
            }
        },
-       initialize(length){
-           let temp=[];
-           for(let i=0;i<length;i++){
-              temp.push(false);
+      initialize(countries){
+            for(let i=0;i<this.round;i++){
+              this.questions.push(this.createQuestion(countries));
             }
-            return temp; 
        },
         errorCheck(){
             if(this.round<5){
@@ -129,7 +129,7 @@ const app=new Vue({
           this.marked=false; 
           this.incorrect=[false,false,false,false];
           this.correct=[false,false,false,false];
-          this.translate.splice(index, 1, true);
+          document.getElementById(`${index}`).classList.add('translate');
        } 
     },
     filters:{
@@ -171,18 +171,6 @@ const app=new Vue({
             const ratio=1-(this.score/this.round);
             const redness=ratio*255;
             return `rgb(${redness},127.5,127.5)`
-        },
-        loaded(){
-            let load=false;
-            this.questions.forEach(question=>{
-                if(question!==undefined){
-                    load=true;
-                }
-                else{
-                    load=false
-                }
-              });
-             return load;
         }
     },
     async mounted(){
