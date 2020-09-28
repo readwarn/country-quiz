@@ -11,10 +11,9 @@ body{
     background: rgb(96, 102, 208);
     display: flex;
     justify-content: center;
-    border: springgreen 1px solid;
-    padding: 1% 0%;
+    padding: 4vh 0%;
     align-items: center;
-    overflow-x: hidden;
+    overflow: hidden;
 }
 div#app{
     min-height: 570px;
