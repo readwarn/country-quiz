@@ -17,7 +17,7 @@
                           <p>You got <span class="score" :style="{color:gradeColor}">{{score}}</span> correct answers</p>
                           <button @click="reset">Try Again</button>
                     </div> 
-                    <div class="capital" v-for="(question,i) in questions" :key="i" v-if="loaded" :class="{'translate':translate[i]}" :id="i">
+                    <div class="capital" v-for="(question,i) in questions" :key="i" v-if="loaded" :id="i">
                         <img :src="question.answer.flag" alt="flag" v-if="flag">
                         <p class="question" v-if="capital">{{question.answer["capital"]}} is the capital of</p>
                         <p class="question" v-if="flag">Which country does this flag belong to?</p>

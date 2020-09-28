@@ -6,7 +6,6 @@ const app=new Vue({
        questions:[],
        incorrect:[false,false,false,false],
        correct:[false,false,false,false],
-       translate:[],
        score:0,
        marked:false,
        capital:false,
@@ -17,6 +16,7 @@ const app=new Vue({
        round:5,
        loaded:false,
        error:'input game rounds',
+       played:0
     }
     },
     methods:{
@@ -31,13 +31,21 @@ const app=new Vue({
              }
         },
         reset(){
-             location.reload();
+            this.questions=[];
+            this.score=0;
+            this.capital=false;
+            this.flag=false;
+            this.zoom1=false;
+            this.zoom2=false;
+            this.slideUp=false;
+            this.played=0;
         },
         gameOn(){
-            if((this.flag || this.capital) && this.round>=5 && this.round<200){
+            if((this.flag || this.capital) && this.round>=5 && this.round<=200){
                 this.slideUp=true
                 this.zoom2=this.capital;
                 this.zoom1=this.flag;
+                this.setQuestions(this.questions,this.createQuestion(this.countries));
             }
             if(!this.flag && !this.capital){
                 this.error='please make a selection!!!'
@@ -45,14 +53,11 @@ const app=new Vue({
             if(this.round<5){
                 this.error="round can't be less than 5"
             }
-            if(this.round>40){
-                this.error="round can't be greater than 40"
+            if(this.round>200){
+                this.error="round can't be greater than 200"
             }
-            console.log(this.questions);
-            this.setQuestions(this.questions,this.round).then(res=>{
-                console.log(res);
-                this.loaded=true;
-            });
+            this.loaded=true;
+            
         },
         randomlySelectFourOptions(countries){
            let optionIndex=[];
@@ -88,13 +93,8 @@ const app=new Vue({
              }
              return question;
        },
-       setQuestions(questions,round){
-           return new Promise((resolve,reject)=>{
-                this.initialize(this.countries);
-                if(questions.length>=round){
-                    resolve(round);
-                }
-           });
+       setQuestions(questions,question){
+           questions.push(question);
        },
        markAnswer(i,j){
            if(!this.marked){
@@ -109,10 +109,8 @@ const app=new Vue({
             }
            }
        },
-      initialize(countries){
-            for(let i=0;i<this.round;i++){
-              this.questions.push(this.createQuestion(countries));
-            }
+      slide(index){
+           document.getElementById(`${index}`).classList.add('translate')
        },
         errorCheck(){
             if(this.round<5){
@@ -126,10 +124,14 @@ const app=new Vue({
             }
         },
        next(index){
-          this.marked=false; 
-          this.incorrect=[false,false,false,false];
-          this.correct=[false,false,false,false];
-          document.getElementById(`${index}`).classList.add('translate');
+           this.played++;
+           this.slide(index);
+           this.marked=false; 
+           this.incorrect=[false,false,false,false];
+           this.correct=[false,false,false,false];
+           if(this.played<this.round){
+            this.setQuestions(this.questions,this.createQuestion(this.countries));
+           }
        } 
     },
     filters:{

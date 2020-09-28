@@ -11,7 +11,7 @@ body{
     background: rgb(96, 102, 208);
     display: flex;
     justify-content: center;
-    padding: 4vh 0%;
+    padding: 6vh 0%;
     align-items: center;
     overflow: hidden;
 }
@@ -139,6 +139,7 @@ div.capital1{
 }
 div.translate{
     transform: translateX(-100%);
+    z-index: 99;
 }
 div.option{
     padding: 0.65rem;
@@ -209,7 +210,7 @@ div.game-type,div.result,div.capital,div.loader-container{
     width: 100%;
     border-radius: 0.6rem;
     background: white;
-    max-height: 560px;
+    max-height: 550px;
 }
 div.game-type div.zoom-off{
     animation: zoom-off 0.6s ease-in-out forwards;
