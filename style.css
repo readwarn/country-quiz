@@ -3,20 +3,21 @@
     margin: 0;
     box-sizing: border-box;
 }
-html,body{
+/* html,body{
     min-height: 100vh;
-}
+} */
 body{
     font-family: 'Poppins', sans-serif;
     background: rgb(96, 102, 208);
     display: flex;
     justify-content: center;
     border: springgreen 1px solid;
+    padding: 1% 0%;
     align-items: center;
     overflow-x: hidden;
 }
 div#app{
-    min-height: 90vh;
+    min-height: 570px;
     position: relative;
     width: 32%;
     margin: auto;
@@ -202,14 +203,14 @@ div.loader-container{
 div.game-type,div.result,div.capital,div.loader-container{
     position: absolute;
     margin: auto;
-    top: 6vh;
+    top: 35px;
     bottom: 0;
     right: 0;
     left: 0;
     width: 100%;
     border-radius: 0.6rem;
     background: white;
-    max-height: 85vh;
+    max-height: 560px;
 }
 div.game-type div.zoom-off{
     animation: zoom-off 0.6s ease-in-out forwards;
